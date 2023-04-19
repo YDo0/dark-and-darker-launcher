@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Dark and Darker Launcher Watch",
+
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+
+            "cwd": "${workspaceFolder}/",
+            "request": "launch",
+            "restart": false,
+            "runtimeExecutable": "nodemon",
+            "runtimeArgs": [
+                "--exec",
+                "\"npm run start\"",
+                "--ext",
+                "js,css",
+                "--ignore",
+                "build/",
+                "--ignore",
+                 "dist/"
+            ],
+            "type": "node",
+            "stopOnEntry": false,
+            "showAsyncStacks": true,
+            "env": {
+                "BABEL_ENV": "development"
+            }
+        }
+    ]
+}
