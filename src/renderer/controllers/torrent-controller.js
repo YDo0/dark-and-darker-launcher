@@ -193,6 +193,7 @@ function getTorrentPath(torrentSummary) {
 
 function showDoneNotification(torrent) {
     const notif = new window.Notification('Download Complete', {
+        title: 'Dark and Darker Launcher',
         body: torrent.name,
         silent: true,
     });

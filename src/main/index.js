@@ -3,6 +3,8 @@ console.time('init');
 const electron = require('electron');
 const app = electron.app;
 
+app.setAppUserModelId('Dark and Darker Launcher');
+
 // Start crash reporter early, so it takes effect for child processes
 const crashReporter = require('../crash-reporter');
 crashReporter.init();

@@ -34,35 +34,18 @@ module.exports = {
     APP_TEAM,
     APP_AUTHOR,
     APP_VERSION,
-    APP_WINDOW_TITLE: APP_NAME,
+    APP_WINDOW_TITLE: 'Dark and Darker Launcher',
 
     CONFIG_PATH: getConfigPath(),
 
     DEFAULT_TORRENTS: [
-        {
-            testID: 'dad-a5-installer',
-            name: 'Dark and Darker A5 Installer',
-            posterFileName: 'dad-a5-installer.jpg',
-            torrentFileName: 'dad-a5-installer.torrent',
-        },
-        {
-            testID: 'dad-a5-hotfix-1',
-            name: 'Dark and Darker A5 Patch #1',
-            posterFileName: 'dad-a5-hotfix-1.jpg',
-            torrentFileName: 'dad-a5-hotfix-1.torrent',
-        },
-        {
-            testID: 'dad-a5-hotfix-2',
-            name: 'Dark and Darker A5 Patch #2',
-            posterFileName: 'dad-a5-hotfix-2.jpg',
-            torrentFileName: 'dad-a5-hotfix-2.torrent',
-        },
     ],
 
     DELAYED_INIT: 3000 /* 3 seconds */,
 
     DEFAULT_DOWNLOAD_PATH: getDefaultDownloadPath(),
 
+    GAME_VERSION_URL: 'https://raw.githubusercontent.com/YDo0/dark-and-darker-launcher/master/static/game-version.json',
     GITHUB_URL: 'https://github.com/ydo0/dark-and-darker-launcher',
     GITHUB_URL_ISSUES:
         'https://github.com/ydo0/dark-and-darker-launcher/issues',
@@ -87,16 +70,18 @@ module.exports = {
 
     WINDOW_ABOUT:
         'file://' + path.join(__dirname, '..', 'static', 'about.html'),
+    WINDOW_FAQ:
+        'file://' + path.join(__dirname, '..', 'static', 'faq.html'),
     WINDOW_MAIN: 'file://' + path.join(__dirname, '..', 'static', 'main.html'),
     WINDOW_WEBTORRENT:
         'file://' + path.join(__dirname, '..', 'static', 'webtorrent.html'),
 
     WINDOW_INITIAL_BOUNDS: {
-        width: 500,
-        height: UI_HEADER_HEIGHT + UI_TORRENT_HEIGHT * 6, // header + 6 torrents
+        width: 750,
+        height: UI_HEADER_HEIGHT + UI_TORRENT_HEIGHT * 5, // header + 6 torrents
     },
-    WINDOW_MIN_HEIGHT: UI_HEADER_HEIGHT + UI_TORRENT_HEIGHT * 2, // header + 2 torrents
-    WINDOW_MIN_WIDTH: 425,
+    WINDOW_MIN_HEIGHT: UI_HEADER_HEIGHT + UI_TORRENT_HEIGHT * 4, // header + 2 torrents
+    WINDOW_MIN_WIDTH: 640,
 
     UI_HEADER_HEIGHT,
     UI_TORRENT_HEIGHT,

@@ -1,0 +1,16 @@
+{
+    "currentVersion": 5,
+    "highestHotfixVersion": 2,
+    "torrents": [
+        {
+            "name": "Dark and Darker A5 Installer",
+            "posterFileName": "dad-a5-installer.jpg",
+            "magnetURL": "magnet:?xt=urn:btih:dbef5dea789992fc174f245e1c4df4a1ef34d1f1&dn=Dark+and+Darker+A5+Installer&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com"
+        },
+        {
+            "name": "Dark and Darker A5 Patch #2",
+            "posterFileName": "dad-a5-hotfix-2.jpg",
+            "magnetURL": "magnet:?xt=urn:btih:7ba4a2fecbb53b474455a393fb918da76759b323&dn=Dark+and+Darker+A5+Patch+%232&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com"
+        }
+    ]
+}

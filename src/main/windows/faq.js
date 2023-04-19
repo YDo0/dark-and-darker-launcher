@@ -22,17 +22,17 @@ function init() {
         resizable: false,
         show: false,
         skipTaskbar: true,
-        title: 'About Launcher',
+        title: 'F.A.Q.',
         useContentSize: true,
         webPreferences: {
             nodeIntegration: true,
             enableBlinkFeatures: 'AudioVideoTracks',
             enableRemoteModule: true,
         },
-        width: 500,
+        width: 700,
     }));
 
-    win.loadURL(config.WINDOW_ABOUT);
+    win.loadURL(config.WINDOW_FAQ);
 
     win.once('ready-to-show', function () {
         win.show();

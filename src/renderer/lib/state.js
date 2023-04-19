@@ -135,7 +135,7 @@ function setupStateSaved() {
             downloadSpeedLimitEnabled: false,
             uploadSpeedLimitEnabled: false,
             downloadSpeedLimit: 1000000,
-            uploadSpeedLimit: 1000000,
+            uploadSpeedLimit: 1000,
         },
         torrents: config.DEFAULT_TORRENTS.map(createTorrentObject),
         torrentsToResume: [],

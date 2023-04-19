@@ -114,10 +114,12 @@ function getMenuTemplate() {
                 //     type: 'separator',
                 // },
                 {
-                    label: 'Check for updates',
-                    click: () => {
-                        windows.main.dispatch('checkGameUpdates');
-                    },
+                    label: 'Check for game updates',
+                    click: () => windows.main.dispatch('checkGameUpdates'),
+                },
+                {
+                    label: 'F.A.Q.',
+                    click: () => windows.faq.init(),
                 },
                 {
                     type: 'separator',
@@ -474,7 +476,7 @@ function getMenuTemplate() {
                 type: 'separator',
             },
             {
-                label: 'About ' + config.APP_NAME,
+                label: 'About Dark and Darker Launcher',
                 click: () => windows.about.init(),
             }
         );
