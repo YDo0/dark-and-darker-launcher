@@ -100,6 +100,13 @@ function init() {
         selectFiles(infoHash, selections)
     );
 
+    ipc.on('wt-set-download-limit', (e, speed) =>
+        setDownloadSpeedLimit(speed)
+    );
+    ipc.on('wt-set-upload-limit', (e, speed) =>
+        setUploadSpeedLimit(speed)
+    );
+
     ipc.send('ipcReadyWebTorrent');
 
     window.addEventListener(
@@ -461,6 +468,20 @@ function selectFiles(torrentOrInfoHash, selections) {
             file.deselect();
         }
     }
+}
+
+function setDownloadSpeedLimit(speed) {
+    // var nodeConsole = require('console');
+    // var myConsole = new nodeConsole.Console(process.stdout, process.stderr);
+    // myConsole.log('Setting download speed limit (bytes/second): ' + speed);
+    client.throttleDownload(speed);
+}
+
+function setUploadSpeedLimit(speed) {
+    // var nodeConsole = require('console');
+    // var myConsole = new nodeConsole.Console(process.stdout, process.stderr);
+    // myConsole.log('Setting upload speed limit (bytes/second): ' + speed);
+    client.throttleUpload(speed);
 }
 
 // Gets a WebTorrent handle by torrentKey

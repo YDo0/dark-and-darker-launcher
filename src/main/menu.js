@@ -53,12 +53,12 @@ function setWindowFocus(flag) {
 // Disallow opening more screens on top of the current one.
 function setAllowNav(flag) {
     getMenuItem('Preferences').enabled = flag;
-    if (process.platform === 'darwin') {
-        getMenuItem('Create New Torrent...').enabled = flag;
-    } else {
-        getMenuItem('Create New Torrent from Folder...').enabled = flag;
-        getMenuItem('Create New Torrent from File...').enabled = flag;
-    }
+    // if (process.platform === 'darwin') {
+    //     getMenuItem('Create New Torrent...').enabled = flag;
+    // } else {
+    //     getMenuItem('Create New Torrent from Folder...').enabled = flag;
+    //     getMenuItem('Create New Torrent from File...').enabled = flag;
+    // }
 }
 
 function onToggleAlwaysOnTop(flag) {
@@ -113,6 +113,15 @@ function getMenuTemplate() {
                 // {
                 //     type: 'separator',
                 // },
+                {
+                    label: 'Check for updates',
+                    click: () => {
+                        windows.main.dispatch('checkGameUpdates');
+                    },
+                },
+                {
+                    type: 'separator',
+                },
                 {
                     role: 'close',
                 },
