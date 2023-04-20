@@ -1,4 +1,5 @@
 const path = require('path');
+const { copyFileSync, mkdirSync, readFileSync } = require('fs');
 const ipcRenderer = require('electron').ipcRenderer;
 
 const TorrentSummary = require('../lib/torrent-summary');
@@ -6,11 +7,14 @@ const sound = require('../lib/sound');
 const { dispatch } = require('../lib/dispatcher');
 
 module.exports = class TorrentController {
-    constructor(state) {
+    constructor(state, config) {
         this.state = state;
+        this.config = config;
     }
 
     torrentParsed(torrentKey, infoHash, magnetURI) {
+        const config = this.config;
+
         let torrentSummary = this.getTorrentSummary(torrentKey);
         console.log(
             'got infohash for %s torrent %s',
@@ -31,12 +35,40 @@ module.exports = class TorrentController {
                 torrentKey,
                 status: 'new',
             };
+
             torrents.unshift(torrentSummary);
             sound.play('ADD');
         }
 
         torrentSummary.infoHash = infoHash;
         torrentSummary.magnetURI = magnetURI;
+
+        // Add poster if it is exist in gameUpdater list
+        const index = this.state.saved.gameUpdater.torrents.findIndex(
+            (x) => x.magnetURL === torrentSummary.magnetURI
+        );
+
+        if (index > -1) {
+            const gameUpdaterTorrent =
+                this.state.saved.gameUpdater.torrents[index];
+
+            copyFileSync(
+                path.join(
+                    config.STATIC_PATH,
+                    gameUpdaterTorrent.posterFileName
+                ),
+                path.join(
+                    config.POSTER_PATH,
+                    infoHash + path.extname(gameUpdaterTorrent.posterFileName)
+                )
+            );
+
+            torrentSummary.posterFileName =
+                infoHash + path.extname(gameUpdaterTorrent.posterFileName);
+            torrentSummary.name = gameUpdaterTorrent.name;
+            torrentSummary.displayName = gameUpdaterTorrent.name;
+        }
+
         dispatch('update');
     }
 

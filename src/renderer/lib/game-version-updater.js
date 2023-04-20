@@ -33,7 +33,7 @@ function saveNewGameVersion(state) {
     fs.writeFileSync(path.join(config.STATIC_PATH, 'game-version.json'), data);
 }
 
-function send(state) {
+function send(state, cb) {
     gameUpdater = state.saved.gameUpdater;
     const get = require('simple-get');
 
@@ -53,9 +53,13 @@ function send(state) {
         console.log('Got game version data', data);
 
         if (data.currentVersion > gameUpdater.currentVersion || data.highestHotfixVersion > gameUpdater.highestHotfixVersion) {
-            gameUpdater = data;
+            gameUpdater = state.saved.gameUpdater = data;
             
             console.log('Updated game version data', data);
+
+            if (cb) cb(true);
         }
+
+        if (cb) cb(false);
     });
 }

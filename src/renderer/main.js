@@ -71,16 +71,16 @@ function onState(err, _state) {
     state = window.state = _state;
     window.dispatch = dispatch;
 
-    telemetry.init(state);
+    // telemetry.init(state);
     gameVersionUpdater.init(state);
     sound.init(state);
 
     // Log uncaught JS errors
-    window.addEventListener(
-        'error',
-        (e) => telemetry.logUncaughtError('window', e),
-        true /* capture */
-    );
+    // window.addEventListener(
+    //     'error',
+    //     (e) => telemetry.logUncaughtError('window', e),
+    //     true /* capture */
+    // );
 
     // Create controllers
     controllers = {
@@ -106,7 +106,7 @@ function onState(err, _state) {
         }),
         torrent: createGetter(() => {
             const TorrentController = require('./controllers/torrent-controller');
-            return new TorrentController(state);
+            return new TorrentController(state, config);
         }),
         torrentList: createGetter(() => {
             return new TorrentListController(state);
@@ -118,6 +118,10 @@ function onState(err, _state) {
         folderWatcher: createGetter(() => {
             const FolderWatcherController = require('./controllers/folder-watcher-controller');
             return new FolderWatcherController();
+        }),
+        gameVersion: createGetter(() => {
+            const GameVersionController = require('./controllers/game-version-controller');
+            return new GameVersionController(state);
         }),
     };
 
@@ -195,11 +199,11 @@ function onState(err, _state) {
 
 // Runs a few seconds after the app loads, to avoid slowing down startup time
 function delayedInit() {
-    gameVersionUpdater.send(state);
-    telemetry.send(state);
+    controllers.gameVersion().checkNewGameVersion();
+    //telemetry.send(state);
 
     // Check version every hour
-    setInterval(() => gameVersionUpdater.send(state), 3600 * 1000);
+    setInterval(() => controllers.gameVersion().checkNewGameVersion(true), 3600 * 1000);
 
     // Send telemetry data every 12 hours, for users who keep the app running
     // for extended periods of time
@@ -381,6 +385,9 @@ const dispatchHandlers = {
     stateSave: () => State.save(state),
     stateSaveImmediate: () => State.saveImmediate(state),
     update: () => {}, // No-op, just trigger an update
+
+    // Game Version Updater
+    checkGameUpdates: () => controllers.gameVersion().checkNewGameVersion()
 };
 
 // Events from the UI never modify state directly. Instead they call dispatch()

@@ -8,19 +8,23 @@ module.exports = class ModalOKCancel extends React.Component {
         const { cancelText, onCancel, okText, onOK } = this.props;
         return (
             <div className='float-right'>
-                <FlatButton
-                    className='control cancel'
-                    style={cancelStyle}
-                    label={cancelText}
-                    onClick={onCancel}
-                />
-                <RaisedButton
-                    className='control ok'
-                    primary
-                    label={okText}
-                    onClick={onOK}
-                    autoFocus
-                />
+                {onCancel && (
+                    <FlatButton
+                        className='control cancel'
+                        style={cancelStyle}
+                        label={cancelText}
+                        onClick={onCancel}
+                    />
+                )}
+                {onOK && (
+                    <RaisedButton
+                        className='control ok'
+                        primary
+                        label={okText}
+                        onClick={onOK}
+                        autoFocus
+                    />
+                )}
             </div>
         );
     }

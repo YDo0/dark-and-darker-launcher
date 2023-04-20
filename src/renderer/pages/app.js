@@ -29,6 +29,9 @@ const Modals = {
     'update-available-modal': createGetter(() =>
         require('../components/update-available-modal')
     ),
+    'game-update-available-modal': createGetter(() =>
+        require('../components/game-update-available-modal')
+    ),
     'unsupported-media-modal': createGetter(() =>
         require('../components/unsupported-media-modal')
     ),

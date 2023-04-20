@@ -35,6 +35,7 @@ module.exports = {
     APP_AUTHOR,
     APP_VERSION,
     APP_WINDOW_TITLE: 'Dark and Darker Launcher',
+    PLAY_GAME_APP: 'DungeonCrawler.exe',
 
     CONFIG_PATH: getConfigPath(),
 
