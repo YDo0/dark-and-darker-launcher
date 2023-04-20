@@ -8,6 +8,13 @@
 
 <h4 align="center">Laucher to make updating the game easier based on WebTorrent - the streaming torrent app. For Mac, Windows, and Linux.</h4>
 
+## Screenshots
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/YDo0/dark-and-darker-launcher/master/static/Screenshot-1.png" />
+
+  <img src="https://raw.githubusercontent.com/YDo0/dark-and-darker-launcher/master/static/Screenshot-2.png" />
+</div>
 
 ## Install
 
