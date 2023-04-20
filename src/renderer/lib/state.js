@@ -122,6 +122,7 @@ function setupStateSaved() {
     const parseTorrent = require('parse-torrent');
 
     const saved = {
+        game: {},
         prefs: {
             downloadPath: config.DEFAULT_DOWNLOAD_PATH,
             isFileHandler: false,
@@ -134,8 +135,8 @@ function setupStateSaved() {
             highestPlaybackPriority: true,
             downloadSpeedLimitEnabled: false,
             uploadSpeedLimitEnabled: false,
-            downloadSpeedLimit: 1000000,
-            uploadSpeedLimit: 1000,
+            downloadSpeedLimit: 2000000,
+            uploadSpeedLimit: 300000,
         },
         torrents: config.DEFAULT_TORRENTS.map(createTorrentObject),
         torrentsToResume: [],

@@ -1,6 +1,7 @@
 module.exports = {
     init,
     send,
+    saveNewGameVersion,
 };
 
 const fs = require('fs');
@@ -31,6 +32,7 @@ function getCurrentGameVersion() {
 function saveNewGameVersion(state) {
     let data = JSON.stringify(state.saved.gameUpdater, null, 4);
     fs.writeFileSync(path.join(config.STATIC_PATH, 'game-version.json'), data);
+    console.log('Saved game version data file', data);
 }
 
 function send(state, cb) {

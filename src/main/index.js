@@ -148,20 +148,20 @@ function init() {
 function delayedInit(state) {
     if (app.isQuitting) return;
 
-    const announcement = require('./announcement');
+    //const announcement = require('./announcement');
     const dock = require('./dock');
-    const updater = require('./updater');
-    const FolderWatcher = require('./folder-watcher');
-    const folderWatcher = new FolderWatcher({ window: windows.main, state });
+    //const updater = require('./updater');
+    //const FolderWatcher = require('./folder-watcher');
+    //const folderWatcher = new FolderWatcher({ window: windows.main, state });
 
-    announcement.init();
+    //announcement.init();
     dock.init();
-    updater.init();
+    //updater.init();
 
-    ipc.setModule('folderWatcher', folderWatcher);
-    if (folderWatcher.isEnabled()) {
-        folderWatcher.start();
-    }
+    // ipc.setModule('folderWatcher', folderWatcher);
+    // if (folderWatcher.isEnabled()) {
+    //     folderWatcher.start();
+    // }
 
     if (process.platform === 'win32') {
         const userTasks = require('./user-tasks');

@@ -123,6 +123,10 @@ function onState(err, _state) {
             const GameVersionController = require('./controllers/game-version-controller');
             return new GameVersionController(state);
         }),
+        game: createGetter(() => {
+            const GameController = require('./controllers/game-controller');
+            return new GameController(state, config);
+        }),
     };
 
     // Add first page to location history
@@ -387,7 +391,10 @@ const dispatchHandlers = {
     update: () => {}, // No-op, just trigger an update
 
     // Game Version Updater
-    checkGameUpdates: () => controllers.gameVersion().checkNewGameVersion()
+    checkGameUpdates: () => controllers.gameVersion().checkNewGameVersion(),
+
+    // Play game
+    playGame: () => controllers.game().startGame(),
 };
 
 // Events from the UI never modify state directly. Instead they call dispatch()

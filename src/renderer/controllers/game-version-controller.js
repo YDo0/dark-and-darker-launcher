@@ -18,6 +18,7 @@ module.exports = class GameVersionController {
                 );
             }
 
+            gameVersionUpdater.saveNewGameVersion(state);
             self.updateGameTorrents(state.saved.gameUpdater.torrents);
         });
     }
